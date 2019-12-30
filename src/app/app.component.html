@@ -1,0 +1,115 @@
+<div class="container-fluid" >
+
+  <nav class="navbar navbar-light bg-light">
+    <span class="navbar-brand mb-0 h1">Navbar</span>
+  </nav>
+  <div class="row">
+    <div class="col-xl-1">
+      <p> whatever </p>
+    </div>
+    <div class="col-xl-11">
+      <div class="row d-flex flex-fill p-5 bg-light">
+        <div class="col-xl-2">
+          <h3>Pre que sheet</h3>
+        </div>
+        <div class="col-xl-2">
+          <h3>programme<br> KULAVILAKU</h3>
+        </div>
+        <div class="col-xl-2">
+          <h3>channel<br> SUN TV</h3>
+        </div>
+        <div class="col-xl-2">
+          <h3>EPISODE-6<br> 406</h3>
+        </div>
+        <div class="col-xl-2">
+          <h3>test<br>date</h3>
+        </div>
+        <div class="col-xl-2 ">
+          <div class="row d-flex flex-fill"><button class="btn btn-primary" type="button">print</button></div>
+        </div>
+      </div>
+      <div class="row card-container" cdkDropListGroup>
+        <div class="col-xl-4 pt-2 bg-secondary">
+          <h4>all commercials <span class="float-right">{{total}}</span> </h4>
+        </div>
+        <div class="col-xl-4 bg-success pt-2">
+          <h4>Break1 <span class="float-right">{{total_1}}</span> </h4>
+        </div>
+        <div class="col-xl-4  bg-warning pt-2">
+          <h4>break2 <span class="float-right">{{total_2}}</span> </h4>
+        </div>
+        <div class="col-xl-4 ">
+          <div class="mt-5 card">
+            <div cdkDropList [cdkDropListData]="try" #commercials="cdkDropList"
+              [cdkDropListConnectedTo]="[break1,break2]" class="commercial-list" (onchange)=drop($event) (cdkDropListDropped)="drop($event)" >
+              <div class="row container-box" *ngFor="let item of try" (cdkDragEntered)="drop($event)" (cdkDragExited)= "drop($event)" cdkDrag>
+                <div class="card-body">
+                  <div class="text-primary">
+                    <h5>{{item.programName}}</h5>
+                  </div>
+                  <div class='d-flex justify-content-between'>
+                    <div>{{item.body}}</div>
+                    <div>{{item.emailDate}}</div>
+                  </div>
+                  <div style='display:flex;' class='justify-content-between'>
+                    <div>Duration <b>{{item.time}}</b></div>
+                    <div>Rate/10sec <b>{{item.price}}</b></div>
+                    <div><b>G</b></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-4 ">
+          <div class="mt-5 card">
+            <div cdkDropList [cdkDropListData]="try2" #break1="cdkDropList"
+              [cdkDropListConnectedTo]="[commercials,break2]" class="commercial-list"
+              (cdkDropListDropped)="drop($event)">
+              <div class="row container-box" *ngFor="let items of try2" (cdkDragEntered)="cdkDragDropEntered($event)" (cdkDragExited)= "cdkDragExited($event)" cdkDrag>
+                <div class="card-body">
+                  <div class="text-primary">
+                    <h5>{{items.programName}}</h5>
+                  </div>
+                  <div class='d-flex justify-content-between'>
+                    <div>{{items.body}}</div>
+                    <div>{{items.emailDate}}</div>
+                  </div>
+                  <div style='display:flex;' class='justify-content-between'>
+                    <div>Duration <b>{{items.time}}</b></div>
+                    <div>Rate/10sec <b>{{items.price}}</b></div>
+                    <div><b>G</b></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-4 ">
+          <div class="mt-5 card">
+            <div cdkDropList [cdkDropListData]="try3" #break2="cdkDropList"
+              [cdkDropListConnectedTo]="[commercials,break1]" class="commercial-list"
+              (cdkDropListDropped)="drop($event)">
+    <div class="row container-box" *ngFor="let items of try3" (cdkDragEntered)="cdkDragDropEntered($event)" (cdkDragExited)= "cdkDragExited($event)" cdkDrag>
+                <div class="card-body">
+                  <div class="text-primary">
+                    <h5>{{items.programName}}</h5>
+                  </div>
+                  <div class='d-flex justify-content-between'>
+                    <div>{{items.body}}</div>
+                    <div>{{items.emailDate}}</div>
+                  </div>
+                  <div style='display:flex;' class='justify-content-between'>
+                    <div id="1" value=items.time>Duration <b>{{items.time}}</b></div>
+                    <div>Rate/10sec <b>{{items.price}}</b></div>
+                    <div><b>G</b></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
